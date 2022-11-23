@@ -6,10 +6,11 @@ public class Problem2 {
 
     }
 
-    static String  validCheck(String testObject) {
-        if (!testObject.matches("(^[a-z]*$)")){
-            System.out.println(EXCEPTION);
-        }
-        return testObject;
+    public boolean lengthCheck(String testObject){
+        return testObject.length() != 0 && testObject.length() != 1;
+    }
+
+    static boolean validCheck(String testObject) {
+        return testObject.matches("(^[a-z]*$)");
     }
 }
