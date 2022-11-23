@@ -3,6 +3,24 @@ package onboarding;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
+
+    }
+
+    static String sameStringDelete(String testObject) {
+        while (true) {
+            boolean sameString = false;
+            for (int i = 0; i < testObject.length() - 1; i++) {
+                if (testObject.charAt(i) == testObject.charAt(i + 1)) {
+                    testObject = testObject.substring(0, i) + testObject.substring(i + 2);
+                    sameString = true;
+                }
+            }
+            if (!sameString) {
+                break;
+            }
+
+        }
+        return testObject;
     }
 
     static boolean lengthZeroOrOne(String testObject) {
