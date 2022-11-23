@@ -9,6 +9,15 @@ class Problem1 {
     private static final int MIN_RANGE = 1;
 
 
+    static int gameResult(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 
     static boolean pageValidCheck(List<Integer> pageNumbers) {
         return pageNumbers.get(1) - pageNumbers.get(0) == 1 &&
