@@ -3,7 +3,14 @@ package onboarding;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-
+        if (!validCheck(cryptogram)) {
+            return "예외 발생";
+        } else {
+            if (lengthZeroOrOne(cryptogram)) {
+                return cryptogram;
+            }
+            return sameStringDelete(cryptogram);
+        }
     }
 
     static String sameStringDelete(String testObject) {
