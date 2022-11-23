@@ -2,9 +2,14 @@ package onboarding;
 
 public class Problem2 {
 
+    private static final String EXCEPTION = "예외 발생";
+    private static final String A_TO_Z = "(^[a-z]*$)";
+    private static final int MIN_RANGE = 1;
+    private static final int MAX_RANGE = 1000;
+
     public static String solution(String cryptogram) {
         if (!validCheck(cryptogram)) {
-            return "예외 발생";
+            return EXCEPTION;
         } else {
             if (lengthZeroOrOne(cryptogram)) {
                 return cryptogram;
@@ -35,10 +40,7 @@ public class Problem2 {
     }
 
     static boolean validCheck(String testObject) {
-        if (testObject.matches("(^[a-z]*$)") && 0 < testObject.length() && testObject.length() < 1001) {
-            return true;
-        }
-        return false;
+        return testObject.matches(A_TO_Z) && MIN_RANGE <= testObject.length() && testObject.length() <= MAX_RANGE;
     }
 
 }
