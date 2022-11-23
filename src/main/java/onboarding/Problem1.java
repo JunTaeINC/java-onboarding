@@ -8,6 +8,14 @@ class Problem1 {
     private static final int MAX_RANGE = 400;
     private static final int MIN_RANGE = 1;
 
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!pageValidCheck(pobi) || !pageValidCheck(crong)) {
+            return -1;
+        }
+        int maxPobi = Math.max(pageNumberMaxValue(pobi.get(0)), pageNumberMaxValue(pobi.get(1)));
+        int maxCrong = Math.max(pageNumberMaxValue(crong.get(0)), pageNumberMaxValue(crong.get(1)));
+        return gameResult(maxPobi, maxCrong);
+    }
 
     static int gameResult(int pobi, int crong) {
         if (pobi > crong) {
