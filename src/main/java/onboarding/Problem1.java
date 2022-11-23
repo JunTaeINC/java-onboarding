@@ -3,14 +3,17 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    //리스트/배열 pobi와 crong이 주어질 때, 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return
-    //왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
+
     private static final int MAX_RANGE = 400;
     private static final int MIN_RANGE = 1;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!pageValidCheck(pobi) || !pageValidCheck(crong)) {
-            return -1;
+            return EXCEPTION;
         }
         int maxPobi = Math.max(pageNumberMaxValue(pobi.get(0)), pageNumberMaxValue(pobi.get(1)));
         int maxCrong = Math.max(pageNumberMaxValue(crong.get(0)), pageNumberMaxValue(crong.get(1)));
@@ -19,11 +22,11 @@ class Problem1 {
 
     static int gameResult(int pobi, int crong) {
         if (pobi > crong) {
-            return 1;
+            return POBI_WIN;
         } else if (pobi < crong) {
-            return 2;
+            return CRONG_WIN;
         } else {
-            return 0;
+            return DRAW;
         }
     }
 
