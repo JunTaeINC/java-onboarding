@@ -5,11 +5,21 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> nameAndScore = makeHashMap(friends);
-
         List<String> userFriendList = makeUserFriendList(user, friends);
+
         putVisitors(nameAndScore, visitors);
-        user
+        userFriendGetScore(nameAndScore , friends , userFriendList);
+
+
     }
+    static Map<String,Integer> removeUserAndUserFriend(String user,Map<String, Integer> nameAndScore ,List<String> userFriend) {
+        nameAndScore.remove(user);
+        for (String friend : userFriend) {
+            nameAndScore.remove(friend);
+        }
+        return nameAndScore;
+    }
+
 
     static Map<String, Integer> userFriendGetScore(Map<String, Integer> nameAndScore,List<List<String>> friends , List<String> userFriendList) {
         for (String userFriend : userFriendList) {
