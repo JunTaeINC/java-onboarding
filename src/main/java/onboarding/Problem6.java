@@ -7,4 +7,11 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    static boolean checkEmail(String email) {
+        if (email.endsWith("@email.com")) {
+            return true;
+        }
+        return false;
+    }
 }
