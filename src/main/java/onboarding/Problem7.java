@@ -5,8 +5,19 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String , Integer> nameAndScore = makeHashMap(friends);
+        putVisitors(nameAndScore , visitors);
 
 
+    }
+
+    static List<String> makeUserFriendList(String user, List<List<String>> friendsList) {
+        List<String> userFriendList  = new ArrayList<>();
+        for (List<String> friends : friendsList) {
+            if (Objects.equals(friends.get(1), user)) {
+                userFriendList.add(friends.get(0));
+            }
+        }
+        return userFriendList;
     }
 
     static Map<String, Integer> putVisitors(Map<String, Integer> nameAndScore , List<String> visitors) {
