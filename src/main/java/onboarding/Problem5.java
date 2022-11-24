@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,7 +11,19 @@ public class Problem5 {
 
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        if (checkMoneyRange(money)) {
+            return moneyCount(money);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    static List<Integer> moneyCount(int money) {
+        List<Integer> answer = new ArrayList<>();
+        for (Integer moneyUnit : MONEY_UNIT) {
+            answer.add(money / moneyUnit);
+            money %= moneyUnit;
+        }
         return answer;
     }
 
