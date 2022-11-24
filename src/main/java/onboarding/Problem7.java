@@ -4,17 +4,31 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String , Integer> nameAndScore = makeHashMap(friends);
+
+
+    }
+
+    static Map<String, Integer> putVisitors(Map<String, Integer> nameAndScore , List<String> visitors) {
+        for (String visitor : visitors){
+            if (nameAndScore.containsKey(visitor)) {
+                nameAndScore.put(visitor , nameAndScore.get(visitor) + 1);
+            }
+            else {
+                nameAndScore.put(visitor , 0);
+            }
+        }
+        return nameAndScore;
     }
 
     static Map<String, Integer> makeHashMap(List<List<String>> friends) {
-        Map<String, Integer> friendAndScore = new HashMap<>();
+        Map<String, Integer> nameAndScore = new HashMap<>();
         for (List<String> friend : friends) {
-            friendAndScore.put(friend.get(0), 0);
-            friendAndScore.put(friend.get(1), 0);
+            nameAndScore.put(friend.get(0), 0);
+            nameAndScore.put(friend.get(1), 0);
         }
-        return friendAndScore;
+        return nameAndScore;
     }
+    static
 
 }
