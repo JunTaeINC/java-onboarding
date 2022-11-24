@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -12,8 +13,19 @@ public class Problem6 {
 
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+
+    }
+
+    static List<String> makeNickNameDuplication(List<List<String>> forms) {
+        List<String> nickNameDuplication = new ArrayList<>();
+        for (List<String> form : forms) {
+            String nickName = form.get(1);
+            for (int length = 0; length < nickName.length() - 2; length++) {
+                nickNameDuplication.add(nickName.substring(length, length + 1));
+            }
+        }
+        return nickNameDuplication;
     }
 
     static boolean checkEmailRange(String email) {
