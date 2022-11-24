@@ -14,7 +14,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
 
-
     }
 
     static List<String> makeNickNameDuplication(List<List<String>> forms) {
@@ -26,6 +25,13 @@ public class Problem6 {
             }
         }
         return nickNameDuplication;
+    }
+
+    static boolean checkValid(String testObject) {
+        if (checkEmailRange(testObject) && checkNickNameRange(testObject) && checkEmail(testObject)) {
+            return true;
+        }
+        return false;
     }
 
     static boolean checkEmailRange(String email) {
