@@ -27,31 +27,21 @@ public class Problem6 {
         return nickNameDuplication;
     }
 
-    static boolean checkValid(String testObject) {
-        if (checkEmailRange(testObject) && checkNickNameRange(testObject) && checkEmail(testObject)) {
-            return true;
-        }
-        return false;
+    static boolean checkValid(List<String> form) {
+        return checkEmailRange(form) && checkNickNameRange(form) && checkEmail(form);
     }
 
-    static boolean checkEmailRange(String email) {
-        if (E_MAIL_MIN_RANGE <= email.length() && email.length() < E_MAIL_MAX_RANGE) {
-            return true;
-        }
-        return false;
+    static boolean checkEmailRange(List<String> form) {
+        return E_MAIL_MIN_RANGE <= form.get(0).length() && form.get(0).length() < E_MAIL_MAX_RANGE;
     }
 
-    static boolean checkNickNameRange(String nickName) {
-        if (NICKNAME_MIN_RANGE <= nickName.length() && NICKNAME_MAX_RANGE < 20) {
-            return true;
-        }
-        return false;
+
+
+    static boolean checkNickNameRange(List<String> form) {
+        return NICKNAME_MIN_RANGE <= form.get(1).length() && form.get(1).length() < NICKNAME_MAX_RANGE;
     }
 
-    static boolean checkEmail(String email) {
-        if (email.endsWith(E_MAIL)) {
-            return true;
-        }
-        return false;
+    static boolean checkEmail(List<String> form) {
+        return form.get(0).endsWith(E_MAIL);
     }
 }
