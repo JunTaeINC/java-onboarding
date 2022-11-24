@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -8,11 +9,26 @@ public class Problem7 {
         List<String> userFriendList = makeUserFriendList(user, friends);
 
         putVisitors(nameAndScore, visitors);
-        userFriendGetScore(nameAndScore , friends , userFriendList);
+        userFriendGetScore(nameAndScore, friends, userFriendList);
+        removeUserAndUserFriend(user, nameAndScore, userFriendList);
 
-
+        return resultPrint(nameAndScore);
     }
-    static Map<String,Integer> removeUserAndUserFriend(String user,Map<String, Integer> nameAndScore ,List<String> userFriend) {
+
+    static List<String> resultPrint(Map<String, Integer> nameAndScore) {
+        List<String> answer = nameAndScore.entrySet().stream()
+                .filter(entry -> entry.getValue() > 0)
+                .map(Map.Entry::getKey)
+                .sorted()
+                .sorted((value1, value2) -> (nameAndScore.get(value2) - nameAndScore.get(value1)))
+                .collect(Collectors.toList());
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
+        }
+        return answer;
+    }
+
+    static Map<String, Integer> removeUserAndUserFriend(String user, Map<String, Integer> nameAndScore, List<String> userFriend) {
         nameAndScore.remove(user);
         for (String friend : userFriend) {
             nameAndScore.remove(friend);
@@ -21,11 +37,11 @@ public class Problem7 {
     }
 
 
-    static Map<String, Integer> userFriendGetScore(Map<String, Integer> nameAndScore,List<List<String>> friends , List<String> userFriendList) {
+    static Map<String, Integer> userFriendGetScore(Map<String, Integer> nameAndScore, List<List<String>> friends, List<String> userFriendList) {
         for (String userFriend : userFriendList) {
-            for(List<String> friend : friends) {
-                if(Objects.equals(friend.get(0), userFriend)) {
-                    nameAndScore.put(friend.get(1) , nameAndScore.get(friend.get(1)) + 10);
+            for (List<String> friend : friends) {
+                if (Objects.equals(friend.get(0), userFriend)) {
+                    nameAndScore.put(friend.get(1), nameAndScore.get(friend.get(1)) + 10);
                 }
             }
         }
@@ -62,5 +78,4 @@ public class Problem7 {
         return nameAndScore;
     }
 
-    static
 }
